@@ -1,3 +1,19 @@
+<?php 
+session_start();
+session_regenerate_id(true);
+if(isset($_SESSION['login'])==false)
+{
+	$to_top='../staff_login/staff_login.html';
+	print'ログインをしてください。<br />';
+	print'<input type="button" onclick="location.href=\''.$to_top.'\'" value="ログイン画面へ" style="width:200">';
+	exit();
+}
+else
+{
+	print $_SESSION['staff_name'];
+	print'さんログイン中<br /><br />';
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +26,10 @@
 
 try
 {
-
-$staff_name=$_POST['name'];
-$staff_pass=$_POST['pass'];
-
-$staff_name=htmlspecialchars($staff_name);
-$staff_pass=htmlspecialchars($staff_pass);
+require_once('../common/common/php');
+$post=sanitize($_POST);
+$staff_name=$post['name'];
+$staff_pass=$postT['pass'];
 
 $dsn='mysql:dbname=shop;host=localhost';
 $user='root';
