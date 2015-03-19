@@ -34,9 +34,19 @@ $pro_code=$_GET['procode'];
 if(isset($_SESSION['cart'])==true)
 {
 	$cart=$_SESSION['cart'];
-}
+	$kazu=$_SESSION['kazu'];
+if(in_array($pro_code,$cart)==true)
+{
+	$to_list='shop_list.php';
+	print'<br /><br />その商品は既に入っています。';
+	print'<input type="button" value="戻る" onclick="location.href=\''.$to_list.'\'" >';
+	exit();	
+} //<----end of second if
+} //end of first if
 $cart[]=$pro_code;
+$kazu[]=1;
 $_SESSION['cart']=$cart;
+$_SESSION['kazu']=$kazu;
 
 }//<----end of try
 catch (Exception $e)
