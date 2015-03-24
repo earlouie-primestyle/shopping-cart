@@ -1,9 +1,10 @@
 <?php 
+$to_top='../staff_login/staff_login.html';
 session_start();
 session_regenerate_id(true);
 if(isset($_SESSION['login'])==false)
 {
-	$to_top='../staff_login/staff_login.html';
+	
 	print'ログインをしてください。<br />';
 	print'<input type="button" onclick="location.href=\''.$to_top.'\'" value="ログイン画面へ" style="width:200">';
 	exit();
@@ -57,7 +58,8 @@ while(true)
 print'<input type="submit" name="disp" value="参照">';
 print'<input type="submit" name="add" value="追加">';
 print'<input type="submit" name="edit" value="修正">';
-print'<input type="submit" name="delete" value="削除">';
+print'<input type="submit" name="delete" value="削除">'.'<br />'.'<br />';
+print'<input type="button" onclick="location.href=\''.$to_top.'\'" value="トップに戻る">';
 print'</form>';
 }
 
